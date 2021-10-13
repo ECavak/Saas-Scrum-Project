@@ -16,21 +16,21 @@ namespace PropTabTabIK.DataAccess.Context
             using var servicesScope = app.ApplicationServices.CreateScope();
             ProjectContext context = servicesScope.ServiceProvider.GetService<ProjectContext>();
 
-            context.Database.Migrate();
+           // context.Database.Migrate();
 
-            if (!context.SuperAdmins.Any())
-            {
-                context.SuperAdmins.AddRange(
-                    new SuperAdmin { Role = Core.Enum.Role.SuperAdministator, Email = "admin@proptabtabhr.com", Status = Core.Enum.Status.Active, Password = "admin123" }
-                    );
-            }
-            if (!context.MailTemplates.Any())
-            {
-                context.MailTemplates.AddRange(
-                    new Entities.SideEntities.MailTemplate { Name = "Hoşgeldiniz Maili", Content = "Hoşgeldiniz...  " }
-                    );
-            }
-            context.SaveChanges();
+            //if (!context.SuperAdmins.Any())
+            //{
+            //    context.SuperAdmins.AddRange(
+            //        new SuperAdmin { Role = Core.Enum.Role.SuperAdministator, Email = "admin@proptabtabhr.com", Status = Core.Enum.Status.Active, Password = "admin123" }
+            //        );
+            //}
+            //if (!context.MailTemplates.Any())
+            //{
+            //    context.MailTemplates.AddRange(
+            //        new Entities.SideEntities.MailTemplate { Name = "Hoşgeldiniz Maili", Content = "Hoşgeldiniz...  " }
+            //        );
+            //}
+            //context.SaveChanges();
         }
     }
 }

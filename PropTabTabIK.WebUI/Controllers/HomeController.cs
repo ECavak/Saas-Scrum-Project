@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using PropTabTabIK.DataAccess.Context;
 using PropTabTabIK.DataAccess.Repositories.Concrete;
 using PropTabTabIK.Entities.Entities;
+using PropTabTabIK.WebUI.ActionFilters;
 using PropTabTabIK.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,9 @@ namespace PropTabTabIK.WebUI.Controllers
 
             return View();
         }
+       // [ClaimRequirementAttribute(ClaimTypes.Email,"")]
         [AllowAnonymous]
+       
         [HttpPost]
         public async Task<IActionResult> Login(SuperAdmin admin, string email)
         {
@@ -67,12 +70,14 @@ namespace PropTabTabIK.WebUI.Controllers
             return View();
         }
 
+        [CustomAuthorizeAttribute]
         public IActionResult LogOut()
         {
             HttpContext.Session.Remove(HttpContext.Session.GetString("SuperAdminID"));
             return RedirectToAction("Index", "Home");
         }
 
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PropTabTabIK.DataAccess.Context;
+using PropTabTabIK.WebUI.ActionFilters;
+using PropTabTabIK.WebUI.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +62,7 @@ namespace PropTabTabIK.WebUI
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
 
+
             services.AddSession(x => x.IdleTimeout = TimeSpan.FromMinutes(30));
 
                 services.AddHttpContextAccessor();
@@ -71,6 +74,7 @@ namespace PropTabTabIK.WebUI
                     options.Cookie.IsEssential = true;
                 });
 
+       
                 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                                 .AddCookie(options =>
                                 {//sisteme login iþlemi gerçekleþmediyse home index yönlendir
