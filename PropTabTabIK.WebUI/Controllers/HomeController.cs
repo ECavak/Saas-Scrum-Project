@@ -70,7 +70,7 @@ namespace PropTabTabIK.WebUI.Controllers
             return View();
         }
 
-        [CustomAuthorizeAttribute]
+        [CustomSessionAttribute]
         public IActionResult LogOut()
         {
             HttpContext.Session.Remove(HttpContext.Session.GetString("SuperAdminID"));

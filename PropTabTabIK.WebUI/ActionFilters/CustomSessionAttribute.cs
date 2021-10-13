@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Routing;
 namespace PropTabTabIK.WebUI.ActionFilters
 {
 
-    public class CustomAuthorizeAttribute : ActionFilterAttribute
+    public class CustomSessionAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
